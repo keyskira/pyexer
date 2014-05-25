@@ -11,7 +11,8 @@ find the sum of the even-valued terms.
 x1 = 1
 x2 = 2
 sum = 3
-for x3 < 4000000:
+x3 = x1 + x2
+while x3 < 4000000:
     x3 = x1 + x2
     sum = sum + x3
     x1 = x2
