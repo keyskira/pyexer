@@ -3,9 +3,8 @@ import cPickle
 
 
 def addtocontacts():
-    name = raw_input("Please input name:")
-    name = name.lower()
-    telnumber = raw_input("Please input telephone number:")
+    name = raw_input("Please input name: ")
+    telnumber = raw_input("Please input telephone number: ")
     if len(contacts) != 0:
         for j in contacts.keys():
             if name == j:
@@ -19,8 +18,7 @@ def addtocontacts():
 
 
 def removepeople():
-    name = raw_input("Please input name:")
-    name = name.lower()
+    name = raw_input("Please input name: ")
     del contacts[name]
 
 
@@ -31,15 +29,16 @@ def savetofile():
 
 
 def readfile():
-    try:
-        return contacts
-    except EOFError:
+    if len(contacts) == 0:
         print "There is nothing."
+    else:
+        return contacts
 
 
 def findpeople():
     name = raw_input("Who do you want to find?")
     return contacts[name]
+
 
 
 if os.path.isfile("contact.data"):
@@ -69,13 +68,14 @@ elif donumber == "2":
     print findpeople
 elif donumber == "3":
     lists = readfile()
-    for i in lists:
-        print i,
-        print lists[i]
+    try:
+        print ("Name".ljust(5) + "Tel Number".rjust(20))
+        for i in lists:
+            print (str(i).ljust(5)+str(contacts[i]).rjust(20))
+    except TypeError:
+        pass
 elif donumber == "4":
     removepeople()
     savetofile()
 else:
-    print "Oops,you cant let me do somgthing I cant do"
-
-
+    print "Oops,you cant let me do somgthing I cant do."
