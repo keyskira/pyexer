@@ -29,7 +29,7 @@ def catch_baidu(tieba_name, begin, end):
     posturls = []
     for x in range(0, pageindex + 1, 50):
         page = 'http://tieba.baidu.com/f?kw=' + tieba_name + '&pn=' + str(x)
-        print page
+        #print page
         pagepraser = get_tieba_page(page)
 
         for url in pagepraser.urls:
